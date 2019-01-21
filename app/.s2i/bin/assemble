@@ -25,7 +25,7 @@ function install_pipenv() {
 set -e
 
 echo "---> Installing gdal-bin ..."
-sudo -c "yum install -y gdal-bin"
+sudo yum install gdal-bin
 
 shopt -s dotglob
 echo "---> Installing application source ..."
