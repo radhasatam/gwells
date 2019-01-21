@@ -24,6 +24,14 @@ function install_pipenv() {
 
 set -e
 
+echo "---> Installing GEOS ..."
+wget ​http://download.osgeo.org/gdal/2.4.0/gdal-2.4.0.tar.gz
+tar xzf gdal-2.4.0.tar.gz
+cd gdal-2.4.0
+./configure
+make
+make install
+
 shopt -s dotglob
 echo "---> Installing application source ..."
 mv /tmp/src/* ./
