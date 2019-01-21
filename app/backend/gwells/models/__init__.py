@@ -21,6 +21,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.contrib.gis.db import models as gis_models
 
 from .common import AuditModel, ProvinceStateCode
 from .screen import ScreenIntakeMethodCode, ScreenMaterialCode, ScreenOpeningCode, ScreenBottomCode,\
@@ -55,6 +56,21 @@ class Profile(models.Model):
 
     class Meta:
         db_table = 'profile'
+
+
+class Border(gis_models.Model):
+    # Regular Django fields corresponding to the attributes in the province borders shapefile.
+    pruid = models.CharField(max_length=2)
+    prname = models.CharField(max_length=55)
+    prename = models.CharField(max_length=30)
+    prfname = models.CharField(max_length=30)
+    preabbr = models.CharField(max_length=10)
+    prfabbr = models.CharField(max_length=10)
+    # GeoDjango-specific: a geometry field (MultiPolygonField)
+    geom = gis_models.MultiPolygonField(srid=4269)
+
+    def __str__(self):
+        return self.prename
 
 
 @receiver(post_save, sender=User)
