@@ -25,7 +25,7 @@ function install_pipenv() {
 set -e
 
 echo "---> Installing GEOS ..."
-wget ​"http://download.osgeo.org/gdal/2.4.0/gdal-2.4.0.tar.gz"
+wget ​"https://download.osgeo.org/gdal/2.4.0/gdal-2.4.0.tar.gz"
 tar xzf gdal-2.4.0.tar.gz
 cd gdal-2.4.0
 ./configure
