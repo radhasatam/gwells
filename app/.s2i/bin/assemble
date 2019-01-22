@@ -24,8 +24,9 @@ function install_pipenv() {
 
 set -e
 
+# https://docs.djangoproject.com/en/2.1/ref/contrib/gis/install/geolibs/#geos
 echo "---> Installing GEOS ..."
-wget ​"https://download.osgeo.org/gdal/2.4.0/gdal-2.4.0.tar.gz"
+wget ​download.osgeo.org/gdal/2.4.0/gdal-2.4.0.tar.gz
 tar xzf gdal-2.4.0.tar.gz
 cd gdal-2.4.0
 ./configure
